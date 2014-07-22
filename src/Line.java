@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 
 public class Line extends PaintObject{
 	double x1, y1, x2, y2;
-	double dist, slopeX, slopeY; 
 	
 	static Point[] points = new Point[100];
 	
@@ -22,24 +21,24 @@ public class Line extends PaintObject{
 	
 	public double distance(){
 		
-		dist = Math.sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
-		return dist;
+		return Math.sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
 	}
 	
 	public double slopeX(){
-		slopeX = (x2 - x1)/dist;
-		return slopeX;
+		
+		return (x2 - x1)/distance();
 	}
 	
 	public double slopeY(){
-		slopeY = (y2 - y1)/dist;
-		return slopeY;
+		
+		return (y2 - y1)/distance();
 	}
 	
 	public void constructLine(){
-		for(int i = 0; i < dist; i++){
-			points[i] = new Point(x1 + i*slopeX, y1 + i*slopeY);
-		}
+		//for(int i = 0; i < distance(); i++){
+			//points[i] = new Point(x1 + i*slopeX(), y1 + i*slopeY());
+			points = new Point[(int)distance()];
+		//}
 	}
 	
 	@Override
