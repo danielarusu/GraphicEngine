@@ -10,14 +10,14 @@ public class Point extends PaintObject {
 	/*
 	 * Sets the coordinates of a point to be drawn
 	 */
-	int x;
-	int y;
+	double x;
+	double y;
 	
-	public Point(int x, int y){
+	public Point(double x, double y){
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	//sets the location of the point to the same coordinates as the current object
 	public void setPoint(Point p){
 		this.x = p.x;
@@ -25,7 +25,7 @@ public class Point extends PaintObject {
 	}
 	
 	//sets the location of the point to the specified coordinates
-	public void setCoordinates(int x, int y){
+	public void setCoordinates(double x, double y){
 		this.x = x;
 		this.y = y;
 	}
@@ -33,17 +33,12 @@ public class Point extends PaintObject {
 	public String printPoint(){
 		return "(" + this.x + "," + this.y + ")";
 	}
-	
-	@Override
-	void draw(Graphics g) {
-		System.out.println("Point");
-		g.setColor(Color.red);
-		g.drawLine(this.x, this.y, this.x, this.y);
-	}
 
 	@Override
-	void draw() {
+	void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		System.out.println("Point");
+		//System.out.println("Point");
+		g.setColor(Color.RED);
+		g.drawLine((int)this.x, (int)this.y, (int)this.x, (int)this.y);
 	}
 }

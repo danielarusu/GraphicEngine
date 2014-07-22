@@ -16,17 +16,13 @@ public class Main extends JPanel {
 		super();
 	}
 	
-	
-	static void paintShapes(){
-		for(int i = 0; i < 10; i++){
-			shapes[i].draw();
-		}
-	}
-	
 	public void paintComponent(Graphics g){
 		
 		super.paintComponent(g);
 		
+		for(int i = 0; i < 10; i++){
+			shapes[i].draw(g);
+		}
 		//Point point = new Point(10,20);
 		//point.setPoint(point);
 		//g.setColor(Color.RED);
@@ -45,8 +41,23 @@ public class Main extends JPanel {
 		frame.setContentPane(panel);
 		frame.setVisible(true);
 		
-		Point point = new Point(10,20);
+		shapes = new PaintObject[10];
 		
-		System.out.println(point.printPoint());
+		for(int i = 0; i < 10; i++){
+			if(i%2 == 0){
+				shapes[i] = new Point(10 + i, 20 + i);
+			}
+			else{
+				shapes[i] = new Line(50,60,100,100);
+			}
+		}
+		
+		Point point1 = new Point(10,20);
+		Point point2 = new Point(20,30);
+		
+		Line line = new Line(point1.x, point1.y, point2.x, point2.y);
+		
+		System.out.println("(x1, y1) is " + point1.printPoint() + "and (x2, y2) is " + point2.printPoint());
+		System.out.println("The distance between the two points is: " + line.distance());
 	}
 }
